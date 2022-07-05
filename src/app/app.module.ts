@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { UIRouterModule } from '@uirouter/angular';
+import { SharedModule } from '@app-shared';
+import { INITIAL_STATES } from './app.states';
+import { uiRouterConfigFn } from './core/router';
 
 @NgModule({
   declarations: [
@@ -12,9 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    UIRouterModule.forRoot({
+      states: INITIAL_STATES,
+      useHash: false,
+      config: uiRouterConfigFn,
+      otherwise: '/',
+    }),
     GraphQLModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

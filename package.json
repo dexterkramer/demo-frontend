@@ -1,5 +1,5 @@
 {
-  "name": "test1",
+  "name": "my-front",
   "version": "0.0.0",
   "scripts": {
     "ng": "./node_modules/.bin/ng",
@@ -19,6 +19,9 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "apollo-angular": "^3.0.1",
+    "@uirouter/angular": "^9.1.0",
+    "@uirouter/core": "^6.0.8",
+    "@uirouter/rx": "^1.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4",

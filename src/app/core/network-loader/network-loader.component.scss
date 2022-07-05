@@ -1,0 +1,10 @@
+.mat-progress-bar {
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+}
+
+
+:host {
+    display: block;
+}
