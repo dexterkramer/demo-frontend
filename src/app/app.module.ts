@@ -7,6 +7,8 @@ import { UIRouterModule } from '@uirouter/angular';
 import { SharedModule } from '@app-shared';
 import { INITIAL_STATES } from './app.states';
 import { uiRouterConfigFn } from './core/router';
+import { CoreModule } from '@app-core/core.module';
+import { NetworkLoaderModule } from '@app-core/network-loader';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { uiRouterConfigFn } from './core/router';
     }),
     GraphQLModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    CoreModule,
+    NetworkLoaderModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

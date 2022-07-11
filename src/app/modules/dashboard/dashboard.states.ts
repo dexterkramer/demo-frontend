@@ -1,16 +1,17 @@
 import { Ng2StateDeclaration } from '@uirouter/angular';
-import { DashboardComponent } from './components/app.dashboard';
+import { DashboardComponent } from './components/dashboard.component';
 
 export const dashboardStates: Ng2StateDeclaration[] = [
     {
         parent: 'app',
         name: 'dashboard',
-        redirectTo: 'home',
+        url: 'dashboard',
+        // redirectTo: 'home',
         views: {
             '^.^.$default': { component: DashboardComponent },
         },
         data: {
-            requiresAuth: true,
+            // requiresAuth: true,
         },
         resolve: [],
     }

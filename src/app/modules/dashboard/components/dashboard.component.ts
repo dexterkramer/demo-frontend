@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './app.dashboard.html',
-  styleUrls: ['./app.dashboard.scss']
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  title = 'my-front';
 }

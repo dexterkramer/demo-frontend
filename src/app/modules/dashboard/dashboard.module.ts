@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
-import { DashboardComponent } from './components/app.dashboard';
+import { UIRouterModule } from '@uirouter/angular';
+import { DashboardComponent } from './components/dashboard.component';
 import { DashboardSharedModule } from './dashboard.shared.module';
+import { dashboardStates } from './dashboard.states';
 
 @NgModule({
     imports: [
-        DashboardSharedModule
+        DashboardSharedModule,
+        UIRouterModule.forChild({
+            states: dashboardStates,
+        }),
     ],
     declarations: [
         DashboardComponent

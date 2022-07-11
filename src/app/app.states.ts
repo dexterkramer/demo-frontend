@@ -2,6 +2,7 @@ import { Ng2StateDeclaration } from '@uirouter/angular';
 import { AppComponent } from './app.component';
 import { NetworkLoaderComponent } from './core/network-loader/network-loader.component';
 import { Error403PageComponent, Error404PageComponent } from '@app-shared';
+import { ProfileComponent } from '@app-module/profile-tunnel/components/profile.component';
 
 export const INITIAL_STATES: Ng2StateDeclaration[] = [
     {
@@ -11,37 +12,13 @@ export const INITIAL_STATES: Ng2StateDeclaration[] = [
         views: {
             loader: { component: NetworkLoaderComponent },
         },
-        redirectTo: 'dashboard',
+        // redirectTo: 'dashboard',
     },
-    // {
-    //     parent: 'app',
-    //     url: 'login',
-    //     name: 'login',
-    //     data: {
-    //         title: I18nPageTitles.login,
-    //     },
-    //     views: {
-    //         '^.^.$default': { component: LoginPageComponent },
-    //     },
-    //     resolve: [
-    //         {
-    //             token: 'linkedinUrl',
-    //             deps: [LinkedInService],
-    //             resolveFn: (linkedinService: LinkedInService): Promise<string> => {
-    //                 return linkedinService
-    //                     .getLinkedinUrlToken(null)
-    //                     .then((result: ApolloQueryResult<LinkedInURLQueryResponse>): string => {
-    //                         return result.data.getLinkedinUrl;
-    //                     });
-    //             },
-    //         },
-    //     ],
-    // },
     {
         name: 'dashboard.**',
         parent: 'app',
         data: {
-            requiresAutth: true,
+            // requiresAutth: true,
         },
         loadChildren: () => import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
     },
@@ -69,38 +46,13 @@ export const INITIAL_STATES: Ng2StateDeclaration[] = [
             },
         },
     },
-    // {
-    //     name: 'tunnels',
-    //     parent: 'app',
-    //     views: {
-    //         '^.^.$default': { component: SidePanelLayoutComponent },
-    //     },
-    //     data: {
-    //         requiresAuth: true,
-    //     },
-    // },
-    // {
-    //     name: 'profile-tunnel.**',
-    //     parent: 'tunnels',
-    //     url: 'profile',
-    //     data: {
-    //         requiresAuth: true,
-    //     },
-    //     loadChildren: () => import('./modules/profile-tunnel/profile-tunnel.module').then((m) => m.ProfileTunnelModule),
-    // },
-    // {
-    //     name: 'company-tunnel.**',
-    //     url: 'company',
-    //     parent: 'tunnels',
-    //     params: {
-    //         requiresAuth: true,
-    //     },
-    //     loadChildren: () => import('./modules/company-tunnel/company-tunnel.module').then((m) => m.CompanyTunnelModule),
-    // },
-    // {
-    //     name: 'whats-next.**',
-    //     url: 'profile',
-    //     parent: 'tunnels',
-    //     loadChildren: () => import('./modules/whats-next/whats-next.module').then((m) => m.WhatsNextModule),
-    // },
+    {
+        name: 'tunnels.**',
+        parent: 'app',
+        url: 'profile',
+        data: {
+            requiresAuth: true,
+        },
+        loadChildren: () => import('./modules/profile-tunnel/profile-tunnel.module').then((m) => m.ProfileTunnelModule),
+    }
 ];
