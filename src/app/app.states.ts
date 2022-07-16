@@ -2,7 +2,6 @@ import { Ng2StateDeclaration } from '@uirouter/angular';
 import { AppComponent } from './app.component';
 import { NetworkLoaderComponent } from './core/network-loader/network-loader.component';
 import { Error403PageComponent, Error404PageComponent } from '@app-shared';
-import { ProfileComponent } from '@app-module/profile-tunnel/components/profile.component';
 
 export const INITIAL_STATES: Ng2StateDeclaration[] = [
     {
@@ -47,12 +46,12 @@ export const INITIAL_STATES: Ng2StateDeclaration[] = [
         },
     },
     {
-        name: 'tunnels.**',
+        name: 'profile.**',
         parent: 'app',
         url: 'profile',
         data: {
             requiresAuth: true,
         },
-        loadChildren: () => import('./modules/profile-tunnel/profile-tunnel.module').then((m) => m.ProfileTunnelModule),
+        loadChildren: () => import('./modules/profile/routing/profile-default.routing').then((m) => m.ProfileDefaultRoutingModule),
     }
 ];

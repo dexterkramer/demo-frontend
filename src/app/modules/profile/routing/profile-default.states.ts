@@ -1,9 +1,9 @@
 import { Ng2StateDeclaration, Transition } from '@uirouter/angular';
-import { ProfileComponent } from './components/profile.component';
+import { ProfileComponent } from '../feature/components/profile.component';
 
-export const profileTunnelStates: Ng2StateDeclaration[] = [
+export const profileDefaultStates: Ng2StateDeclaration[] = [
     {
-        name: 'tunnels',
+        name: 'profile',
         parent: 'app',
         url: 'profile',
         views: {

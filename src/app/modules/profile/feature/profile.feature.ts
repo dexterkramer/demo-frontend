@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
-import { UIRouterModule } from '@uirouter/angular';
+import { AccountProviderModule } from '@app-module/account/provider/account.provider';
 import { ProfileComponent } from './components/profile.component';
-import { profileTunnelStates } from './profile-tunnel.states';
 
 @NgModule({
     imports: [
-        UIRouterModule.forChild({
-            states: profileTunnelStates,
-        }),
+        AccountProviderModule.forRoot()
     ],
     providers: [
 
@@ -19,4 +16,4 @@ import { profileTunnelStates } from './profile-tunnel.states';
         ProfileComponent
     ]
 })
-export class ProfileTunnelModule {}
+export class ProfileFeatureModule {}
