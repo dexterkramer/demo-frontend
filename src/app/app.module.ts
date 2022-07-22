@@ -6,12 +6,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from '@app-core/core.module';
 import { NetworkLoaderModule } from '@app-core/network-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DefaultHeaderComponent } from './src/app/core/layout/default/header/default-header.component';
+import { AuthFeatureModule } from '@app-module/auth/feature/auth.module';
 
 @NgModule({
   declarations: [
-  
-    DefaultHeaderComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -19,7 +18,8 @@ import { DefaultHeaderComponent } from './src/app/core/layout/default/header/def
     HttpClientModule,
     CoreModule,
     NetworkLoaderModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthFeatureModule
   ],
   providers: [
 
