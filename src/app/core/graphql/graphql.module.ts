@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
 import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
 import {HttpLink} from 'apollo-angular/http';
+import { ConfigService } from '@app-core/config/config.service';
 
 @NgModule({
   imports: [
@@ -13,16 +14,17 @@ import {HttpLink} from 'apollo-angular/http';
   providers: [
     {
       provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink) => {
+      useFactory: (httpLink: HttpLink, config: ConfigService) => {
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: 'http://localhost:8080/graphql',
+            uri: config.env.GRAPHQL_API_ENDPOINT,
           }),
         };
       },
       deps: [
-        HttpLink
+        HttpLink,
+        ConfigService
       ],
     },
   ],

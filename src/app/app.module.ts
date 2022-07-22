@@ -3,31 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from '@app-core/graphql/graphql.module';
 import { HttpClientModule } from '@angular/common/http';
-import { UIRouterModule } from '@uirouter/angular';
-import { SharedModule } from '@app-shared';
-import { INITIAL_STATES } from './app.states';
-import { uiRouterConfigFn } from '@app-core/router';
 import { CoreModule } from '@app-core/core.module';
 import { NetworkLoaderModule } from '@app-core/network-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DefaultHeaderComponent } from './src/app/core/layout/default/header/default-header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+  
+    DefaultHeaderComponent
   ],
   imports: [
     BrowserModule,
-    UIRouterModule.forRoot({
-      states: INITIAL_STATES,
-      useHash: false,
-      config: uiRouterConfigFn,
-      otherwise: '/',
-    }),
     GraphQLModule,
     HttpClientModule,
-    SharedModule,
     CoreModule,
     NetworkLoaderModule.forRoot(),
-    GraphQLModule
+    BrowserAnimationsModule
   ],
   providers: [
 

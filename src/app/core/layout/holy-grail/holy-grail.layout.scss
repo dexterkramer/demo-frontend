@@ -1,0 +1,62 @@
+/* container for the page layout */
+.container {
+   min-height: 100vh;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}
+  
+  /* main content of page which has 3 horizontal sections - nav, article and nav */
+  main {
+    padding-top: 80px;
+  }
+  
+  /* some basic styles. nothing to do with flexbox */
+  header, footer,
+  nav, .content, aside {
+    border: 1px solid black;
+    padding: 0.25em;
+  }
+  
+  header {
+    background-color: #FFC0CB
+  }
+  
+  nav {
+    background-color: #FFFF66
+  }
+  
+  .content {
+    background-color: #33FF33
+  }
+  
+  aside {
+    background-color: #FF9933
+  }
+  
+  footer {
+    background-color: #66B2FF
+  }
+  
+  /* I went with a fixed height header & footer because it's a common case.
+    This could easily be altered to flex proportionally with the page.
+  */
+  header {
+    max-height: 70px;
+    min-height: 70px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+  }
+  
+  footer {
+    max-height: 100px;
+    min-height: 100px;
+  }
+  
+  /* Make main content of middle section scrollable */
+  .content {
+    overflow: auto;
+  }

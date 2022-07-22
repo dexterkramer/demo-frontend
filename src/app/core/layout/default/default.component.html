@@ -1,0 +1,28 @@
+<!-- <div class="container" fxLayout="column" >
+    <header role="heading" >Header</header>
+    <main role="main" fxLayout="row" fxLayout.xs="column" >
+        <section class="content" fxFlex="5 1 auto">
+            <ui-view name="content" ></ui-view>
+        </section>
+    </main>
+    <footer role="contentinfo" >Footer</footer>
+</div> -->
+
+
+
+<header flexLayout="column"> 
+    <ui-view name="header" ></ui-view>
+</header>
+<div flexLayout="row" fxFlex>
+    <div fxFlex="20">
+        Sidebar
+        <!-- <app-sidebar fxFlex></app-sidebar> -->
+    </div>
+    <div fxFlex="80" class="content">
+        <ui-view name="content" ></ui-view>
+    </div>
+</div>
+<footer flexLayout="column">
+    Footer
+</footer>
+<!-- <app-footer flexLayout="column"></app-footer> -->

@@ -1,7 +1,7 @@
+import { Error403PageComponent, Error404PageComponent } from '@app-core/pages';
 import { Ng2StateDeclaration } from '@uirouter/angular';
 import { AppComponent } from './app.component';
 import { NetworkLoaderComponent } from './core/network-loader/network-loader.component';
-import { Error403PageComponent, Error404PageComponent } from '@app-shared';
 
 export const INITIAL_STATES: Ng2StateDeclaration[] = [
     {

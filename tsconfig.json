@@ -26,8 +26,6 @@
     "paths": {
       "@app-core": ["app/core/index"],
       "@app-core/*": ["app/core/*"],
-      "@app-shared": ["app/shared/index"],
-      "@app-shared/*": ["app/shared/*"],
       "@app-module": ["app/modules/index"],
       "@app-module/*": ["app/modules/*"]
     }
