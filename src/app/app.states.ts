@@ -1,5 +1,6 @@
 import { Error403PageComponent, Error404PageComponent } from '@app-core/pages';
-import { LoginPageComponent } from '@app-module/auth/feature/component/login';
+import { LoginComponent } from '@app-module/auth/feature/component/login';
+import { RegistrationComponent } from '@app-module/auth/feature/component/register/registration.component';
 import { Ng2StateDeclaration } from '@uirouter/angular';
 import { AppComponent } from './app.component';
 import { NetworkLoaderComponent } from './core/network-loader/network-loader.component';
@@ -22,7 +23,30 @@ export const INITIAL_STATES: Ng2StateDeclaration[] = [
             // title: I18nPageTitles.login,
         },
         views: {
-            '!layout': { component: LoginPageComponent },
+            '!layout': { component: LoginComponent },
+        },
+        resolve: [
+            // {
+            //     token: 'linkedinUrl',
+            //     deps: [LinkedInService],
+            //     resolveFn: (linkedinService: LinkedInService): Promise<string> => {
+            //         return linkedinService
+            //             .getLinkedinUrlToken(null)
+            //             .then((result: ApolloQueryResult<LinkedInURLQueryResponse>): string => {
+            //                 return result.data.getLinkedinUrl;
+            //             });
+            //     },
+            // },
+        ],
+    },
+    {
+        parent: 'app',
+        url: 'register',
+        name: 'register',
+        data: {
+        },
+        views: {
+            '!layout': { component: RegistrationComponent },
         },
         resolve: [
             // {

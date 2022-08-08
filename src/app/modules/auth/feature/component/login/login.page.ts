@@ -1,71 +1,44 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { StateService } from '@uirouter/core';
-import { Subscription } from 'rxjs';
-import { Apollo } from 'apollo-angular';
-// import { meQuery, MeQueryResponse } from '../../gql/account.gql';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { KratosService } from '@app-module/auth/kratos.service';
+
 @Component({
-    templateUrl: './login.page.html',
-    styleUrls: ['./login.page.scss'],
-    // animations: zoomInOut,
-    host: {
-        // '[@zoomInOut]': 'true',
-    },
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss']
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
-    public form: FormGroup;
-    private formSubscription: Subscription | null = null;
-    public loading = false;
-    // public registrationLink = environment.registrationLink;
-    // @Input() linkedinUrl;
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
 
-    public get username(): AbstractControl | null{
-        return this.form.get('username');
+  constructor(
+    public formBuilder: FormBuilder,
+    // public router: Router,
+    public kratos: KratosService,
+  ) {
+    this.loginForm = this.formBuilder.group({
+      username: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    });
+  }
+
+  ngOnInit(): void {
+    this.kratos.initLoginFlow();
+  }
+
+  async onLogin(): Promise<void> {
+    const formValue = this.loginForm.getRawValue();
+    if (await this.kratos.login(formValue.username, formValue.password)) {
+      // this.router.navigate(['/dashboard']);
+    } else {
+      this.loginForm.setValue({
+        username: '',
+        password: '',
+      });
     }
+  }
 
-    public get password(): AbstractControl | null {
-        return this.form.get('password');
-    }
-
-    constructor(
-        private fb: FormBuilder,
-        // private oauthService: OAuthService,
-        // private stateService: StateService,
-        // private networkLoaderService: NetworkLoaderService,
-        private apollo: Apollo
-    ) {
-        this.form = this.fb.group({
-            username: [null, [Validators.required]],
-            password: [null, [Validators.required]],
-        });
-    }
-
-    check = () => {
-        this.form.markAsDirty();
-    };
-
-    ngOnInit() {
-        this.formSubscription = this.form.valueChanges.subscribe((data) => {
-            if (this.form.errors && this.form.errors["invalidPassword"]) {
-                this.form.errors["invalidPassword"] = false;
-            }
-        });
-    }
-
-    ngOnDestroy() {
-        if (this.formSubscription) {
-            this.formSubscription.unsubscribe();
-        }
-    }
-
-    // linkedinConnection = () => {
-    //     window.open(this.linkedinUrl, '_self');
-    // };
-
-    submit = (): void => {
-        if (this.form.valid) {
-            // this.networkLoaderService.addLoad();
-            this.loading = true;
-        }
-    };
+  onRegister(): void {
+    // this.router.navigate(['/registration']);
+  }
 }
