@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-front": {
+    "demo-frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,7 +21,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-front",
+            "outputPath": "dist/demo-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "my-front:build:production"
+              "browserTarget": "demo-frontend:build:production"
             },
             "development": {
-              "browserTarget": "my-front:build:development"
+              "browserTarget": "demo-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-front:build"
+            "browserTarget": "demo-frontend:build"
           }
         },
         "test": {
@@ -108,7 +108,7 @@
       }
     }
   },
-  "defaultProject": "my-front",
+  "defaultProject": "demo-frontend",
   "cli": {
     "analytics": false
   }
