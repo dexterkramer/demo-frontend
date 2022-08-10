@@ -108,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "my-front"
+  "defaultProject": "my-front",
+  "cli": {
+    "analytics": false
+  }
 }

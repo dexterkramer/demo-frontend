@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { StateService } from '@uirouter/core';
 import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 // import { meQuery, MeQueryResponse } from '../../gql/account.gql';

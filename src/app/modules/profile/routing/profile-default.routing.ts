@@ -1,14 +1,38 @@
 import { NgModule } from '@angular/core';
-import { UIRouterModule } from '@uirouter/angular';
+import { RouterModule, Routes } from '@angular/router';
+import { ProfileComponent } from '../feature/components/profile.component';
 import { ProfileFeatureModule } from '../feature/profile.feature';
-import { profileDefaultStates } from './profile-default.states';
+
+export const routes: Routes = [{
+    path: '',
+    // canActivate: [ AuthGuard, RoleGuard ],
+    // data: {
+    //   allowdRoles: ['talent_manager']
+    // },
+    children : [
+      {
+          path: '**',
+          component: ProfileComponent,
+        //   resolve: {
+        //       structureAccounts: StructureAccountsResolver
+        //   },
+        //   data: {
+        //       structureSearchQueryFilters: {
+        //           roles: ['talent_manager', 'sales']
+        //       }
+        //   }
+      },
+    ],
+  }];
+
+
+
+
 
 @NgModule({
     imports: [
         ProfileFeatureModule,
-        UIRouterModule.forChild({
-            states: profileDefaultStates,
-        }),
+        RouterModule.forChild(routes)
     ],
     providers: [
 
@@ -17,7 +41,7 @@ import { profileDefaultStates } from './profile-default.states';
         
     ],
     exports : [
-        
+        RouterModule
     ]
 })
 export class ProfileDefaultRoutingModule {}

@@ -11,7 +11,7 @@
 
 
 <header flexLayout="column"> 
-    <ui-view name="header" ></ui-view>
+    <!-- <ui-view name="header" ></ui-view> -->
 </header>
 <div flexLayout="row" fxFlex>
     <div fxFlex="20">
@@ -19,7 +19,7 @@
         <!-- <app-sidebar fxFlex></app-sidebar> -->
     </div>
     <div fxFlex="80" class="content">
-        <ui-view name="content" ></ui-view>
+        <router-outlet></router-outlet>
     </div>
 </div>
 <footer flexLayout="column">

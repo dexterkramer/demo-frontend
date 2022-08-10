@@ -7,6 +7,7 @@ import { CoreModule } from '@app-core/core.module';
 import { NetworkLoaderModule } from '@app-core/network-loader';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthFeatureModule } from '@app-module/auth/feature/auth.module';
+import { AppRouting } from './app.routing.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthFeatureModule } from '@app-module/auth/feature/auth.module';
     GraphQLModule,
     HttpClientModule,
     CoreModule,
+    AppRouting,
     NetworkLoaderModule.forRoot(),
     BrowserAnimationsModule,
     AuthFeatureModule
