@@ -1,70 +1,30 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, AbstractControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { Apollo } from 'apollo-angular';
-// import { meQuery, MeQueryResponse } from '../../gql/account.gql';
+import { Component, OnInit } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakProfile } from 'keycloak-js';
+
 @Component({
     templateUrl: './login.page.html',
     styleUrls: ['./login.page.scss'],
-    // animations: zoomInOut,
-    host: {
-        // '[@zoomInOut]': 'true',
-    },
 })
-export class LoginPageComponent implements OnInit, OnDestroy {
-    public form: FormGroup;
-    private formSubscription: Subscription | null = null;
-    public loading = false;
-    // public registrationLink = environment.registrationLink;
-    // @Input() linkedinUrl;
+export class LoginPageComponent implements OnInit {
+  public isLoggedIn = false;
+  public userProfile: KeycloakProfile | null = null;
 
-    public get username(): AbstractControl | null{
-        return this.form.get('username');
+  constructor(private readonly keycloak: KeycloakService) {}
+
+  public async ngOnInit() {
+    this.isLoggedIn = await this.keycloak.isLoggedIn();
+
+    if (this.isLoggedIn) {
+      this.userProfile = await this.keycloak.loadUserProfile();
     }
+  }
 
-    public get password(): AbstractControl | null {
-        return this.form.get('password');
-    }
+  public login() {
+    this.keycloak.login();
+  }
 
-    constructor(
-        private fb: FormBuilder,
-        // private oauthService: OAuthService,
-        // private stateService: StateService,
-        // private networkLoaderService: NetworkLoaderService,
-        private apollo: Apollo
-    ) {
-        this.form = this.fb.group({
-            username: [null, [Validators.required]],
-            password: [null, [Validators.required]],
-        });
-    }
-
-    check = () => {
-        this.form.markAsDirty();
-    };
-
-    ngOnInit() {
-        this.formSubscription = this.form.valueChanges.subscribe((data) => {
-            if (this.form.errors && this.form.errors["invalidPassword"]) {
-                this.form.errors["invalidPassword"] = false;
-            }
-        });
-    }
-
-    ngOnDestroy() {
-        if (this.formSubscription) {
-            this.formSubscription.unsubscribe();
-        }
-    }
-
-    // linkedinConnection = () => {
-    //     window.open(this.linkedinUrl, '_self');
-    // };
-
-    submit = (): void => {
-        if (this.form.valid) {
-            // this.networkLoaderService.addLoad();
-            this.loading = true;
-        }
-    };
+  public logout() {
+    this.keycloak.logout();
+  }
 }

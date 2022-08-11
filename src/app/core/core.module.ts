@@ -3,7 +3,6 @@ import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from 'app/app.component';
-import { configFactory, ConfigService } from './config/config.service';
 import { HolyGrailLayoutComponent } from './layout/holy-grail';
 import { Error403PageComponent, Error404PageComponent } from './pages';
 import { DefaultLayoutComponent } from './layout/default/default.component';
@@ -27,13 +26,6 @@ import { RouterModule } from '@angular/router';
         DefaultHeaderComponent,
     ],
     providers: [
-        ConfigService,
-        {   
-            provide: APP_INITIALIZER,
-            useFactory: configFactory,
-            deps: [ConfigService],
-            multi: true
-        }
     ],
     exports: [
         RouterModule,

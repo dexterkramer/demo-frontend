@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {ApolloModule, APOLLO_OPTIONS} from 'apollo-angular';
-import {ApolloClientOptions, InMemoryCache} from '@apollo/client/core';
+import {InMemoryCache} from '@apollo/client/core';
 import {HttpLink} from 'apollo-angular/http';
 import { ConfigService } from '@app-core/config/config.service';
 
@@ -14,11 +14,11 @@ import { ConfigService } from '@app-core/config/config.service';
   providers: [
     {
       provide: APOLLO_OPTIONS,
-      useFactory: (httpLink: HttpLink, config: ConfigService) => {
+      useFactory: (httpLink: HttpLink, configService: ConfigService) => {
         return {
           cache: new InMemoryCache(),
           link: httpLink.create({
-            uri: config.env.GRAPHQL_API_ENDPOINT,
+            uri: configService.config.value.GRAPHQL_API_ENDPOINT,
           }),
         };
       },

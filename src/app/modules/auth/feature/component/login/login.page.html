@@ -1,71 +1,34 @@
-<div class="container">
-    <div class="row">
-        <div class="text-center">
-            <div class="card-body">
-                <h1>
-                    Bienvenue sur votre<br />
-                    espace 
-                </h1>
+<h1>Keycloak Angular Example</h1>
 
-                <form class="form" [formGroup]="form" (submit)="submit()">
-                    <div
-                        class="alert alert-danger"
-                        *ngIf="form.dirty && form.errors && form.errors['invalidPassword']"
-                    >
-                        L'adresse e-mail ou le mot de passe est incorrect.
-                    </div>
-                    <input
-                        label="Adresse e-mail"
-                        class=""
-                        formControlName="username"
-                    />
-                    
-                    <input
-                        formControlName="password"
-                        label="Mot de passe"
-                        class=""
-                        type="password"
-                    />
-                    
-                    <div class="">
-                        <button
-                            class="btn btn-default"
-                            type="submit"
-                            (click)="check()"
-                        >
-                            Se connecter
-                        </button>
-                    </div>
-                    <a
-                        uiSref="lost-password"
-                        href="/account/lost-password"
-                        class="text-sm"
-                        >Mot de passe oublié</a
-                    >
-                    <p class="mt-3 mb-0" >
-                        <b>Vous n'êtes pas encore inscrit ?</b>
-                    </p>
-                    <p class="text-sm">
-                        <span>
-                            Déposez votre candidature auprès de nos équipes
-                        </span>
-                        <br />
-                        <a
-                            target="_blank"
-                            >En savoir plus</a
-                        >
-                    </p>
-                </form>
-            </div>
-            <!-- <loader
-                *ngIf="loading"
-                width="10em"
-                height="5em"
-                loadingText="Connexion en cours..."
-                i18n-loadingText="Texte de chargement de connexion sur la page login@pages.login.loader"
-                [@zoomInOut]="true"
-            >
-            </loader> -->
-        </div>
-    </div>
-</div>
+<button *ngIf="isLoggedIn" type="button" (click)="logout()">Log out</button>
+<button *ngIf="!isLoggedIn" type="button" (click)="login()">Log in</button>
+
+<ng-container *ngIf="userProfile">
+  <h2>User information</h2>
+  <table>
+    <tr *ngIf="userProfile.id">
+      <th scope="row">ID</th>
+      <td>{{ userProfile.id }}</td>
+    </tr>
+    <tr *ngIf="userProfile.username">
+      <th scope="row">Username</th>
+      <td>{{ userProfile.username }}</td>
+    </tr>
+    <tr *ngIf="userProfile.firstName">
+      <th scope="row">First name</th>
+      <td>{{ userProfile.firstName }}</td>
+    </tr>
+    <tr *ngIf="userProfile.lastName">
+      <th scope="row">First name</th>
+      <td>{{ userProfile.lastName }}</td>
+    </tr>
+    <tr *ngIf="userProfile.email">
+      <th scope="row">E-mail</th>
+      <td>{{ userProfile.email }}</td>
+    </tr>
+    <tr>
+      <th scope="row">E-mail verified</th>
+      <td>{{ userProfile.emailVerified ? 'Yes' : 'No' }}</td>
+    </tr>
+  </table>
+</ng-container>

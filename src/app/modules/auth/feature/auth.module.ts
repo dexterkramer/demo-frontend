@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { KeycloakService } from 'keycloak-angular';
 import { LoginPageComponent } from './component/login';
 
 @NgModule({
@@ -13,7 +14,6 @@ import { LoginPageComponent } from './component/login';
     ReactiveFormsModule
   ],
   providers: [
-
   ],
   exports: [
     LoginPageComponent
