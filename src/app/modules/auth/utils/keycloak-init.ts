@@ -2,8 +2,10 @@ import { ConfigService } from '@app-core/config/config.service';
 import { KeycloakService } from 'keycloak-angular';
 
 export function initializeKeycloak(keycloak: KeycloakService, configService: ConfigService) {
+
       return () => new Promise((resolve, reject) => {
-        configService.config.subscribe((config) => {
+        let subscribe = configService.config.subscribe((config) => {
+          subscribe.unsubscribe();
           resolve(
             keycloak.init({
               config: {
@@ -15,6 +17,10 @@ export function initializeKeycloak(keycloak: KeycloakService, configService: Con
                 onLoad: 'check-sso',
                 silentCheckSsoRedirectUri:
                   window.location.origin + '/assets/silent-check-sso.html'
+              },
+              bearerExcludedUrls: ['/assets', '/clients/public'],
+              shouldUpdateToken: (request) => {
+                return !(request.headers.get('token-update') === 'false');
               }
             })    
           )
