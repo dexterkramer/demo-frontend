@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from 'app/app.component';
 import { HolyGrailLayoutComponent } from './layout/holy-grail';
@@ -14,8 +13,7 @@ import { RouterModule } from '@angular/router';
         RouterModule,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
-        FlexLayoutModule
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,

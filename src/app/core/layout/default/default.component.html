@@ -9,20 +9,40 @@
 </div> -->
 
 
-
-<header flexLayout="column"> 
-    <!-- <ui-view name="header" ></ui-view> -->
+<!-- <header flexLayout="column"> 
+    <ui-view name="header" ></ui-view>
 </header>
 <div flexLayout="row" fxFlex>
     <div fxFlex="20">
         Sidebar
-        <!-- <app-sidebar fxFlex></app-sidebar> -->
+        <app-sidebar fxFlex></app-sidebar>
     </div>
     <div fxFlex="80" class="content">
         <router-outlet></router-outlet>
     </div>
 </div>
 <footer flexLayout="column">
+    Footer
+</footer>
+<app-footer flexLayout="column"></app-footer> -->
+
+
+
+
+
+<header> 
+    <!-- <ui-view name="header" ></ui-view> -->
+</header>
+<div>
+    <div>
+        Sidebar
+        <!-- <app-sidebar fxFlex></app-sidebar> -->
+    </div>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+<footer>
     Footer
 </footer>
 <!-- <app-footer flexLayout="column"></app-footer> -->
